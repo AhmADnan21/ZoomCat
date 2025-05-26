@@ -1,0 +1,1 @@
+login_with_cookies(driver, "https://test-admin-ipipgo.cd.xiaoxigroup.net")
