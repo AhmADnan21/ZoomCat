@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC  # For expected
 from selenium.webdriver.chrome.service import Service  # For Chrome driver service
 from selenium.webdriver.support.ui import Select  # For handling dropdown menus
 from selenium.common.exceptions import TimeoutException  # For handling timeout exceptions
+from webdriver_manager.chrome import ChromeDriverManager
 import time  # For adding delays and timestamps
 import os
 from datetime import datetime
@@ -32,8 +33,8 @@ class TestArticleCategory(unittest.TestCase):
         with open(self.report_file, "w", encoding="utf-8") as f:
             f.write(f"Test Report - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n{'='*50}\n\n")
 
-        # Setup browser
-        self.driver = webdriver.Chrome(service=Service("C:/Selenium_Tests/chromedriver.exe"))
+        # Setup browser using webdriver-manager
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.wait = WebDriverWait(self.driver, 20)
         
         # Initial page load
